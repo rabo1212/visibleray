@@ -191,7 +191,7 @@ nav a{text-decoration:none;white-space:nowrap;padding:8px 0}
 .list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .clients{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .clients .cl{display:flex;align-items:center;justify-content:center;gap:8px;height:76px;padding:12px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.clients .cl img{width:auto;height:auto;max-height:34px;max-width:100%;object-fit:contain}
+.clients .cl img{width:auto;height:auto;max-height:34px;max-width:100%;object-fit:contain}.cl img[src$="plainpod.png"],.cl img[src$="howlpot.png"]{max-height:22px}.cl img[src$="sunmi.png"]{max-height:28px}
 .clients .cl.g img{height:26px;width:26px;flex:none}
 .clients .cl b{font-size:13px;font-weight:700;line-height:1.3;text-align:left;word-break:keep-all}
 .clients .cl.t b{font-size:15px;font-weight:800;text-align:center}
@@ -457,7 +457,7 @@ const P=[
  {k:'bus',t:'춘천 콜렉션 〈버스〉',c:'춘천문화원',y:'',f:['ex','gr'],r:'전시 공간 기획·디자인, 설치',x:['ex_bus_1','ex_bus_3']},
  {k:'resid',t:'춘천예술촌 4기 입주작가 연속전시',c:'춘천예술촌',y:'',f:['gr'],r:'키비주얼',x:['ex_resid_1','ex_resid_2','ex_resid_4']}
 ];
-const CLI=[['logo/gangwon','강원특별자치도'],['logo/chuncheon','춘천시'],['logo/gidp','강원디자인진흥원'],['txt','강원정보문화산업진흥원'],['logo/ani','춘천애니메이션박물관'],['logo/gwcf','강원문화재단'],['logo/cccf','춘천문화재단'],['logo/artvillage','춘천예술촌'],['logo/indo','인도미술박물관'],['txt','플레인팟'],['txt','하울팟'],['txt','선미한과']];
+const CLI=[['logo/gangwon','강원특별자치도'],['logo/chuncheon','춘천시'],['logo/gidp','강원디자인진흥원'],['logo/gica','강원정보문화산업진흥원'],['logo/ani','춘천애니메이션박물관'],['logo/gwcf','강원문화재단'],['logo/cccf','춘천문화재단'],['logo/artvillage','춘천예술촌'],['logo/indo','인도미술박물관'],['logo/plainpod','플레인팟'],['logo/howlpot','하울팟'],['logo/sunmi','선미한과']];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $=s=>document.querySelector(s);
 $('#clients').innerHTML=CLI.map(([l,n])=>(l===null||l==='txt')?`<div class="cl t"><b>${esc(n)}</b></div>`:l==='gov'?`<div class="cl g"><img src="i/logo/gov.png" alt=""><b>${esc(n)}</b></div>`:`<div class="cl"><img src="i/${l}.png" alt="${esc(n)}" title="${esc(n)}"></div>`).join('');
