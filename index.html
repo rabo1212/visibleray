@@ -11,7 +11,7 @@
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://rabo1212.github.io/visibleray/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="협동조합 가시광선 — 설립 4년, 누적 매출 11억 · 전시 기획 · 행사 운영 · 디자인 · AI 영상">
+<meta name="description" content="협동조합 가시광선 — 전시 기획 · 행사 운영 · 디자인 · AI 영상">
 <style>
 /*
 VOICE  : 전시장 벽 캡션처럼 담백하고 정확하게. 작업이 말하게 한다.
@@ -81,7 +81,7 @@ nav a{text-decoration:none;white-space:nowrap;padding:8px 0}
 @media(max-width:1000px){.gflow{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:32px}.gflow li::after{display:none}}
 @media(max-width:560px){.gflow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* history */
-.hist{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);margin:72px 0 56px}
+.hist{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,6vw,80px);margin:72px 0 56px}
 .tl{width:100%;border-collapse:collapse;font-size:14px}
 .tl th{width:64px;text-align:left;vertical-align:top;font-weight:800;padding:12px 0;border-top:1px solid var(--line)}
 .tl td{padding:12px 0;border-top:1px solid var(--line);line-height:1.6}
@@ -251,13 +251,11 @@ dialog::backdrop{background:rgba(0,0,0,.8)}
   <div class="stage"><video id="reel" muted loop playsinline autoplay preload="auto" aria-label="가시광선 작업 쇼릴"></video></div>
   <div class="in">
     <p class="co"><b>협동조합 가시광선</b><span>VISIBLERAY</span></p>
-    <h1><span class="l">설립 4년, 누적 매출 11억</span>전년도 대비 매출 2배 성장</h1>
+    <h1><span class="l">설립 4년</span>전년도 대비 매출 2배 성장</h1>
     <p>전시 기획 · 행사 운영 · 디자인 · AI 영상</p>
-    <div class="kpi">
+    <div class="kpi" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px">
       <div><b>2022.11</b><span>춘천 설립</span></div>
-      <div><b>11억</b><span>설립 이후 4년 누적 매출</span></div>
-      <div><b>3억 → 6억</b><span>2025 매출 → 2026 추정</span></div>
-      <div><b>+100%</b><span>연간 성장률</span></div>
+      <div><b>+100%</b><span>전년도 대비 매출 성장</span></div>
     </div>
   </div>
 </section>
@@ -287,16 +285,7 @@ dialog::backdrop{background:rgba(0,0,0,.8)}
           <tr><th>2026</th><td>코레드 · 원주 원더플레이트 AI 홍보영상 · 노닐섬 · 플리플라 아트파크 3회(6·8·10월)<br>틀 없는 확장 · 기억을 그리다 · 다다다(문경·영월 순회) · 켜 LAYER · 모두의 미술 · 춘천 뿌리전(3회째)<br>영월 인도미술박물관 「뮤지엄 이음」 개선 사업 · 세종 지사 입주(홍익대 세종캠퍼스)</td></tr>
         </table>
       </div>
-      <div>
-        <p class="k">연 매출</p>
-        <div class="bars">
-          <div style="--h:52%"><i></i><b>3.1억</b><span>2023</span></div>
-          <div style="--h:58%"><i></i><b>3.5억</b><span>2024</span></div>
-          <div style="--h:51%"><i></i><b>3.1억</b><span>2025</span></div>
-          <div class="hi" style="--h:100%"><i></i><b>6억</b><span>2026 추정</span></div>
-        </div>
-        <p class="cap">2026년은 연말 추정치</p>
-      </div>
+      
     </div>
 
     <div class="disc">
@@ -408,7 +397,7 @@ dialog::backdrop{background:rgba(0,0,0,.8)}
       <div><p class="k">보유 등록·확인</p>
         <p class="certs">산업디자인전문회사 신고 · 여성기업 확인 · 직접생산확인(전시회, 인쇄출판)<br>옥외광고사업 등록 · 출판사 신고 · 비디오물제작업 신고</p>
       </div>
-      <div><p class="k">협업 기관</p><div class="clients" id="clients"></div></div>
+      <div><p class="k">협력 기관·기업</p><div class="clients" id="clients"></div></div>
     </div>
   </div>
 </section>
@@ -468,10 +457,10 @@ const P=[
  {k:'bus',t:'춘천 콜렉션 〈버스〉',c:'춘천문화원',y:'',f:['ex','gr'],r:'전시 공간 기획·디자인, 설치',x:['ex_bus_1','ex_bus_3']},
  {k:'resid',t:'춘천예술촌 4기 입주작가 연속전시',c:'춘천예술촌',y:'',f:['gr'],r:'키비주얼',x:['ex_resid_1','ex_resid_2','ex_resid_4']}
 ];
-const CLI=[['logo/gidp','강원디자인진흥원'],['logo/cccc','춘천문화원'],['logo/cccf','춘천문화재단'],['logo/kfa','한국미술협회 춘천지부'],['logo/indo','인도미술박물관'],['logo/lsw','이상원미술관'],['logo/ani','춘천애니메이션박물관'],['gov','강원권통일플러스센터'],['gov','강원서부보훈지청'],['logo/gwcf','강원문화재단'],['logo/ktng','KT&G 상상마당 춘천'],['logo/kam','한국박물관협회'],['gov','문화체육관광부']];
+const CLI=[['txt','강원특별자치도'],['txt','춘천시'],['logo/gidp','강원디자인진흥원'],['txt','강원정보문화산업진흥원'],['logo/ani','춘천애니메이션박물관'],['logo/gwcf','강원문화재단'],['logo/cccf','춘천문화재단'],['txt','춘천예술촌'],['logo/indo','인도미술박물관'],['txt','플레인팟'],['txt','하울팟'],['txt','선미한과']];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $=s=>document.querySelector(s);
-$('#clients').innerHTML=CLI.map(([l,n])=>l===null?`<div class="cl t"><b>${esc(n)}</b></div>`:l==='gov'?`<div class="cl g"><img src="i/logo/gov.png" alt=""><b>${esc(n)}</b></div>`:`<div class="cl"><img src="i/${l}.png" alt="${esc(n)}" title="${esc(n)}"></div>`).join('');
+$('#clients').innerHTML=CLI.map(([l,n])=>(l===null||l==='txt')?`<div class="cl t"><b>${esc(n)}</b></div>`:l==='gov'?`<div class="cl g"><img src="i/logo/gov.png" alt=""><b>${esc(n)}</b></div>`:`<div class="cl"><img src="i/${l}.png" alt="${esc(n)}" title="${esc(n)}"></div>`).join('');
 $('#aiGrid').innerHTML=AI.map(a=>`<article class="vc"><div class="m"><video data-src="v/${a.v}.mp4" poster="v/${a.v}.jpg" muted loop playsinline aria-label="${esc(a.t)}"></video></div><h3>${esc(a.t)}</h3><div class="meta">${esc(a.c)} · ${a.y} · ${esc(a.m)}</div><p>${esc(a.d)}</p></article>`).join('');
 const thumb=p=>p.v?`<video data-src="v/${p.v}.mp4" poster="v/${p.v}.jpg" muted loop playsinline></video>`:`<img src="i/${p.img||p.k+'_p'}.jpg" alt="" loading="lazy">`+(p.hv?`<video class="hv" data-hv="v/${p.hv}.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>`:'');
 $('#grid').innerHTML=P.map((p,i)=>`<button class="card" data-i="${i}" data-f="${p.f.join(' ')}" aria-label="${esc(p.t)} 자세히"><div class="im">${thumb(p)}</div><h3>${esc(p.t)}</h3><span class="cap">${esc([p.c,p.y].filter(Boolean).join(' · '))}</span></button>`).join('');
