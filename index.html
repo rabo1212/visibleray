@@ -400,7 +400,7 @@ dialog::backdrop{background:rgba(0,0,0,.8)}
     <p class="k">Team</p>
     <h2>기획부터 기록, 제작, <span class="l">설치까지</span></h2>
     <div class="team">
-      <div><b>강승원</b><span>책임이사 · 디렉터</span><span>전시 공간 기획, 사진</span></div>
+      <div><b>강승원</b><span>총괄이사 · 디렉터</span><span>전시 공간 기획, 사진</span></div>
       <div><b>홍보라</b><span>이사장 · AI 비주얼 디렉터</span><span>생성형 AI 이미지·영상, 사진</span></div>
       <div><b>이예지</b><span>디자인 파트장</span><span>키비주얼, 편집 디자인</span></div>
     </div>
@@ -472,7 +472,7 @@ const P=[
  {k:'bus',t:'춘천 콜렉션 〈버스〉',c:'춘천문화원',y:'',f:['ex','gr'],r:'전시 공간 기획·디자인, 설치',x:['ex_bus_1','ex_bus_3']},
  {k:'resid',t:'춘천예술촌 4기 입주작가 연속전시',c:'춘천예술촌',y:'',f:['gr'],r:'키비주얼',x:['ex_resid_1','ex_resid_2','ex_resid_4']}
 ];
-const CLI=[['logo/gidp','강원디자인진흥원'],['logo/cccc','춘천문화원'],['logo/cccf','춘천문화재단'],['logo/kfa','한국미술협회 춘천지부'],['logo/indo','인도미술박물관'],['logo/lsw','이상원미술관'],['logo/ani','춘천애니메이션박물관'],['gov','강원권통일플러스센터'],['gov','강원서부보훈지청'],['logo/gwcf','강원문화재단'],['logo/ktng','KT&G 상상마당 춘천'],['logo/kam','한국박물관협회'],['gov','문화체육관광부'],[null,'코아스페이스']];
+const CLI=[['logo/gidp','강원디자인진흥원'],['logo/cccc','춘천문화원'],['logo/cccf','춘천문화재단'],['logo/kfa','한국미술협회 춘천지부'],['logo/indo','인도미술박물관'],['logo/lsw','이상원미술관'],['logo/ani','춘천애니메이션박물관'],['gov','강원권통일플러스센터'],['gov','강원서부보훈지청'],['logo/gwcf','강원문화재단'],['logo/ktng','KT&G 상상마당 춘천'],['logo/kam','한국박물관협회'],['gov','문화체육관광부']];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $=s=>document.querySelector(s);
 $('#clients').innerHTML=CLI.map(([l,n])=>l===null?`<div class="cl t"><b>${esc(n)}</b></div>`:l==='gov'?`<div class="cl g"><img src="i/logo/gov.png" alt=""><b>${esc(n)}</b></div>`:`<div class="cl"><img src="i/${l}.png" alt="${esc(n)}" title="${esc(n)}"></div>`).join('');
