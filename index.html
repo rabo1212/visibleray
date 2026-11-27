@@ -457,7 +457,7 @@ const P=[
  {k:'bus',t:'춘천 콜렉션 〈버스〉',c:'춘천문화원',y:'',f:['ex','gr'],r:'전시 공간 기획·디자인, 설치',x:['ex_bus_1','ex_bus_3']},
  {k:'resid',t:'춘천예술촌 4기 입주작가 연속전시',c:'춘천예술촌',y:'',f:['gr'],r:'키비주얼',x:['ex_resid_1','ex_resid_2','ex_resid_4']}
 ];
-const CLI=[['txt','강원특별자치도'],['txt','춘천시'],['logo/gidp','강원디자인진흥원'],['txt','강원정보문화산업진흥원'],['logo/ani','춘천애니메이션박물관'],['logo/gwcf','강원문화재단'],['logo/cccf','춘천문화재단'],['txt','춘천예술촌'],['logo/indo','인도미술박물관'],['txt','플레인팟'],['txt','하울팟'],['txt','선미한과']];
+const CLI=[['logo/gangwon','강원특별자치도'],['logo/chuncheon','춘천시'],['logo/gidp','강원디자인진흥원'],['txt','강원정보문화산업진흥원'],['logo/ani','춘천애니메이션박물관'],['logo/gwcf','강원문화재단'],['logo/cccf','춘천문화재단'],['logo/artvillage','춘천예술촌'],['logo/indo','인도미술박물관'],['txt','플레인팟'],['txt','하울팟'],['txt','선미한과']];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $=s=>document.querySelector(s);
 $('#clients').innerHTML=CLI.map(([l,n])=>(l===null||l==='txt')?`<div class="cl t"><b>${esc(n)}</b></div>`:l==='gov'?`<div class="cl g"><img src="i/logo/gov.png" alt=""><b>${esc(n)}</b></div>`:`<div class="cl"><img src="i/${l}.png" alt="${esc(n)}" title="${esc(n)}"></div>`).join('');
