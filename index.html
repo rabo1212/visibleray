@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VISIBLERAY 가시광선</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="협동조합 가시광선 VISIBLERAY">
+<meta property="og:description" content="설립 4년, 누적 매출 11억 · 전년도 대비 매출 2배 성장 — 전시 기획 · 행사 운영 · 디자인 · AI 영상">
+<meta property="og:image" content="https://rabo1212.github.io/visibleray/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://rabo1212.github.io/visibleray/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="협동조합 가시광선 — 설립 4년, 누적 매출 11억 · 전시 기획 · 행사 운영 · 디자인 · AI 영상">
+<style>
+/*
+VOICE  : 전시장 벽 캡션처럼 담백하고 정확하게. 작업이 말하게 한다.
+IDEA   : 도록(카탈로그). 모든 작업은 작품 캡션(제목·발주처·연도·방식)과 함께 놓인다.
+PICTURE: 첫 화면은 AI 영상·전시 영상을 2초 단위로 잘라 붙인 쇼릴.
+COLOUR : 블랙과 화이트만. 색은 작업물 안에만 있다.
+TYPE   : Pretendard. 큰 제목은 300·800 대비, 캡션은 13–14px.
+*/
+@font-face{font-family:Pretendard;src:url(fonts/Pretendard.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{--bg:#fff;--ink:#0a0a0a;--sub:#6b6b6b;--line:#e4e4e4;--dk:#0a0a0a;--dk2:#161616;--dsub:#9a9a9a;color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased;word-break:keep-all}
+img,video{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(56px,9vw,120px) max(5vw,18px)}
+.dark{background:var(--dk);color:#fff}
+.dark .cap,.dark .lead{color:var(--dsub)}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h2{font-size:clamp(30px,5vw,52px)}
+h2 .l{font-weight:300}
+.lead{font-size:clamp(16px,1.6vw,18px);color:var(--sub);max-width:640px;margin:18px 0 0}
+.cap{font-size:13px;color:var(--sub);line-height:1.5}
+.k{font-size:14px;font-weight:700;margin:0 0 14px}
+
+/* header */
+header{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;height:48px;padding:0 max(5vw,18px);color:#fff;background:#000}
+.logo{font-weight:800;letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.logo span{font-weight:400;margin-left:8px}
+nav{display:flex;gap:clamp(12px,2.4vw,28px);font-size:14px;overflow-x:auto}
+nav a{text-decoration:none;white-space:nowrap;padding:8px 0}
+
+/* hero */
+.hero{position:relative;background:#000;color:#fff}
+.stage{position:relative;width:100%;height:calc(100svh - 48px);min-height:420px;overflow:hidden;background:#fff}
+@media(orientation:portrait){.stage{height:auto;min-height:0;aspect-ratio:16/9}}
+.hero video{position:absolute;inset:0;object-fit:cover}
+
+.hero .in{padding:clamp(32px,5vw,64px) max(5vw,18px) clamp(40px,6vw,80px)}
+.hero h1{font-size:clamp(40px,7.4vw,96px);line-height:1.02}
+.hero h1 .l{font-weight:300;display:block}
+.hero p{margin:18px 0 0;font-size:clamp(15px,1.6vw,18px);color:#d8d8d8}
+.hero .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tag{border:1px solid rgba(255,255,255,.55);border-radius:99px;padding:6px 14px;font-size:13px}
+
+
+.certs{margin:0;padding-top:14px;border-top:1px solid var(--line);font-size:15px;line-height:1.9}
+/* kpi */
+.hero .co{margin:0 0 22px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;color:#fff}
+.hero .co b{font-size:clamp(24px,3.2vw,40px);font-weight:800;letter-spacing:-.02em}
+.hero .co span{font-size:clamp(14px,1.6vw,18px);font-weight:600;letter-spacing:.14em}
+
+.hero .kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.4);margin-top:32px}
+.hero .kpi div{padding:16px 12px 0 0}
+.hero .kpi b{display:block;font-size:clamp(24px,3.6vw,44px);font-weight:300;line-height:1.05;white-space:nowrap}
+.hero .kpi span{font-size:13px;color:#bdbdbd}
+@media(max-width:720px){.hero .kpi{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}}
+/* flow */
+.gflow{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;counter-reset:f}
+.gflow li{position:relative;border-top:2px solid var(--ink);padding-top:12px;counter-increment:f}
+.gflow li img{aspect-ratio:1/1.414;height:auto;margin-bottom:12px;background:#f2f2f2}
+.gflow .y{display:block;font-size:12px;color:var(--sub);margin-bottom:4px}
+.gflow b{display:block;font-size:15px;line-height:1.35}
+.gflow p{margin:6px 0 0;font-size:13px;color:var(--sub);line-height:1.5}
+.gflow li:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:-15px;font-size:14px;background:var(--bg);padding:0 2px}
+@media(max-width:1000px){.gflow{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:32px}.gflow li::after{display:none}}
+@media(max-width:560px){.gflow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* history */
+.hist{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);margin:72px 0 56px}
+.tl{width:100%;border-collapse:collapse;font-size:14px}
+.tl th{width:64px;text-align:left;vertical-align:top;font-weight:800;padding:12px 0;border-top:1px solid var(--line)}
+.tl td{padding:12px 0;border-top:1px solid var(--line);line-height:1.6}
+.bars{display:flex;align-items:flex-end;gap:14px;height:240px;border-bottom:2px solid var(--ink)}
+.bars div{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.bars i{display:block;height:calc(var(--h) * .78);background:#d9d9d9}
+.bars .hi i{background:var(--ink)}
+.bars b{order:-1;font-size:15px;font-weight:700;margin-bottom:6px}
+.bars span{position:absolute;bottom:-26px;font-size:12px;color:var(--sub)}
+.hist .cap{margin-top:34px}
+@media(max-width:860px){.hist{grid-template-columns:1fr}}
+/* vision */
+.vision{padding-top:clamp(80px,12vw,160px);padding-bottom:clamp(80px,12vw,160px)}
+.vision h2{font-size:clamp(36px,6.4vw,84px)}
+.fest{margin:56px 0 0;font-size:clamp(28px,5.4vw,72px);font-weight:800;letter-spacing:-.02em;line-height:1}
+.fest span{display:block;font-size:clamp(15px,1.8vw,20px);font-weight:400;color:var(--dsub);margin-top:12px;letter-spacing:0}
+.cycle{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #444}
+.cycle li{padding:18px 18px 0 0;font-size:15px;line-height:1.5;position:relative}
+.cycle li b{display:block;font-size:12px;color:var(--dsub);margin-bottom:6px}
+.cycle li:not(:last-child)::after{content:"→";position:absolute;right:6px;top:16px;color:var(--dsub)}
+.goals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,40px);margin-top:72px}
+.goals div{border-top:2px solid #fff;padding-top:16px}
+.goals b{font-size:12px;color:var(--dsub)}
+.goals h3{font-size:clamp(20px,2.4vw,28px);margin:8px 0 10px}
+.goals p{margin:0;color:var(--dsub);font-size:14px;line-height:1.6}
+@media(max-width:760px){.cycle{grid-template-columns:1fr 1fr;row-gap:16px}.cycle li::after{display:none}.goals{grid-template-columns:1fr}}
+/* intro */
+.intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:end}
+.intro h2{font-size:clamp(28px,4.4vw,48px)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink);margin-top:48px}
+.facts div{padding:16px 12px 0 0}
+.facts b{display:block;font-size:clamp(30px,4.6vw,52px);font-weight:300;line-height:1;white-space:nowrap}
+.facts span{font-size:13px;color:var(--sub)}
+.disc{margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) 168px;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.row h3{font-size:clamp(24px,3.2vw,36px);font-weight:300}
+.row h3 b{font-weight:800}
+.row p{margin:0;color:var(--sub)}
+.row .th{aspect-ratio:16/9;background:#000;overflow:hidden}
+.row:hover h3{font-weight:300;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+
+/* AI */
+.ai-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.4vw,32px);margin-top:48px}
+.vc .m{aspect-ratio:16/9;background:#111;overflow:hidden}
+.vc h3{font-size:20px;margin:16px 0 4px}
+.vc .meta{font-size:13px;color:var(--dsub)}
+.vc p{margin:8px 0 0;font-size:15px;color:#cfcfcf}
+.flow{margin-top:clamp(56px,7vw,88px);border-top:1px solid #333;padding-top:28px}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{padding:0 18px 0 0;border-left:1px solid #333;padding-left:14px}
+.steps b{display:block;font-size:17px;margin-bottom:6px}
+.steps span{font-size:13px;color:var(--dsub)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tools .tag{border-color:#444;color:#cfcfcf}
+.now{margin-top:28px;font-size:14px;color:#cfcfcf;border:1px solid #333;padding:14px 16px;display:inline-block}
+
+/* featured */
+.feat{margin-top:56px}
+.feat+.feat{margin-top:clamp(72px,9vw,120px)}
+.fhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 32px;margin-bottom:20px}
+.fhead h3{font-size:clamp(24px,3.4vw,38px)}
+.strip{aspect-ratio:7680/1080;background:#f2f2f2;overflow:hidden;margin-bottom:12px}
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) minmax(0,.62fr);gap:12px}
+.fgrid>div{background:#f2f2f2;overflow:hidden}
+.fgrid .po{aspect-ratio:1/1.414}
+.fgrid .po img{object-fit:contain;background:#fff}
+.fgrid2{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
+.fgrid .vid{aspect-ratio:auto;background:#fff}
+.row4{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.row4>div{aspect-ratio:4/3;overflow:hidden;background:#f2f2f2}
+.fgrid .vid video{object-fit:contain}
+
+/* archive grid */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 28px}
+.chip{font:inherit;font-size:14px;border:1px solid var(--ink);background:#fff;color:var(--ink);border-radius:99px;padding:9px 18px;min-height:44px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.chip:focus-visible,.card:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 16px}
+.card{all:unset;cursor:pointer;display:block}
+.card[hidden]{display:none!important}
+.card .im{aspect-ratio:1/1.414;background:#f2f2f2;overflow:hidden;position:relative}
+.card .im .hv{position:absolute;inset:0;object-fit:contain;background:#fff;opacity:0;transition:opacity .3s}
+.card.on .im .hv{opacity:1}
+.card .im img,.card .im video{transition:transform .5s}
+.card .im img{object-fit:contain;object-position:center}
+.card:hover .im img{transform:scale(1.03)}
+.card h3{font-size:15px;font-weight:700;margin:12px 0 2px;line-height:1.35}
+.card .cap{display:block}
+
+/* lab */
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:48px}
+.photos{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.photos figure{flex:0 0 78%;margin:0;scroll-snap-align:start}
+.photos img{aspect-ratio:3/2}
+.lab .vv{aspect-ratio:16/9;background:#111;overflow:hidden}
+.lab h3{font-size:20px;margin:16px 0 4px}
+.arrows{display:flex;gap:8px;margin-top:12px}
+.arrows button{font:inherit;width:44px;height:44px;border:1px solid #555;background:none;color:#fff;cursor:pointer;font-size:18px}
+
+/* team, info */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.team div{border-top:2px solid var(--ink);padding-top:14px}
+.team b{display:block;font-size:22px}
+.team span{display:block;font-size:14px;color:var(--sub);margin-top:4px}
+.info{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);margin-top:clamp(56px,7vw,96px)}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.clients{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.clients .cl{display:flex;align-items:center;justify-content:center;gap:8px;height:76px;padding:12px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.clients .cl img{width:auto;height:auto;max-height:34px;max-width:100%;object-fit:contain}
+.clients .cl.g img{height:26px;width:26px;flex:none}
+.clients .cl b{font-size:13px;font-weight:700;line-height:1.3;text-align:left;word-break:keep-all}
+.clients .cl.t b{font-size:15px;font-weight:800;text-align:center}
+@media(max-width:560px){.clients{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* footer */
+footer .big{font-size:clamp(40px,8vw,112px);font-weight:300;letter-spacing:-.03em;line-height:1}
+footer .big b{font-weight:800}
+.contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px;border-top:1px solid #333;padding-top:24px;font-size:15px}
+.contact .cap{display:block;margin-bottom:6px}
+.fine{margin-top:56px;font-size:12px;color:#777}
+
+/* dialog */
+dialog{border:0;padding:0;width:min(1100px,94vw);max-height:92svh;background:#fff;color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.8)}
+.dl{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);max-height:92svh}
+.dl .a{background:#f2f2f2;overflow:auto;display:grid;gap:8px;padding:8px}
+.dl .a img{height:auto;object-fit:contain}
+.dl .b{padding:28px;overflow:auto}
+.dl h3{font-size:26px}
+.dl dl{display:grid;grid-template-columns:5em minmax(0,1fr);gap:8px 12px;font-size:15px;margin:22px 0 0}
+.dl dt{color:var(--sub)}.dl dd{margin:0}
+.x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;background:#000;color:#fff;font-size:20px;cursor:pointer;z-index:2}
+
+@media(max-width:900px){
+ .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 0}
+}
+@media(max-width:700px){
+ nav a:not(.keep){display:none}
+ .intro,.lab,.info,.ai-grid,.dl{grid-template-columns:minmax(0,1fr)}
+ .row{grid-template-columns:minmax(0,1fr) 112px;gap:6px 16px}
+ .row p{grid-column:1;font-size:14px}
+ .row .th{grid-column:2;grid-row:1/3}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+ .fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .fgrid .wide{grid-column:1/-1;order:-1}
+ .fgrid2{grid-template-columns:minmax(0,1fr)}
+ .fgrid2 .po{order:2}
+ .team,.contact{grid-template-columns:minmax(0,1fr)}
+ .row4{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .dl .a{max-height:46svh}
+ .photos figure{flex-basis:88%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card .im img{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#top">VISIBLERAY<span>가시광선</span></a>
+  <nav aria-label="섹션">
+    <a href="#about">Growth</a><a class="keep" href="#archive">Work</a><a class="keep" href="#ai">AI Visual</a><a class="keep" href="#vision">Vision 2027</a><a class="keep" href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="stage"><video id="reel" muted loop playsinline autoplay preload="auto" aria-label="가시광선 작업 쇼릴"></video></div>
+  <div class="in">
+    <p class="co"><b>협동조합 가시광선</b><span>VISIBLERAY</span></p>
+    <h1><span class="l">설립 4년, 누적 매출 11억</span>전년도 대비 매출 2배 성장</h1>
+    <p>전시 기획 · 행사 운영 · 디자인 · AI 영상</p>
+    <div class="kpi">
+      <div><b>2022.11</b><span>춘천 설립</span></div>
+      <div><b>11억</b><span>설립 이후 4년 누적 매출</span></div>
+      <div><b>3억 → 6억</b><span>2025 매출 → 2026 추정</span></div>
+      <div><b>+100%</b><span>연간 성장률</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="about">
+  <div class="wrap">
+    <p class="k">Growth</p>
+    <h2>기록부터 <span class="l">체험형 문화까지</span></h2>
+    <p class="lead">기획전시와 박물관 개선 사업, 원로 작가 전시, 지역 공연과 아트마켓, 그리고 작가 아카이브 플랫폼까지. 전시를 넘어 시민이 직접 참여하는 문화로 영역을 넓혀 왔습니다.</p>
+    <ol class="gflow">
+      <li><img src="i/frameless_p.jpg" alt="" loading="lazy"><span class="y">2026</span><b>틀 없는 확장</b><p>강원디자인진흥원 기획전시 — 작품 110점, 기획부터 운영까지</p></li>
+      <li><img src="i/indo_p.jpg" alt="" loading="lazy"><span class="y">2026</span><b>영월 인도미술박물관</b><p>K-뮤지엄 「뮤지엄 이음」 사업으로 박물관 개선 사업 완수</p></li>
+      <li><img src="i/ppuri_kv.jpg" alt="2026 춘천뿌리전 포스터" loading="lazy" style="object-position:center top"><span class="y">2024–2026</span><b>춘천 뿌리전</b><p>아카이브 노하우로 춘천 원로 작가 전시를 3년 연속 기획·진행</p></li>
+      <li><img src="i/nonil_s.jpg" alt="" loading="lazy"><span class="y">2026</span><b>노닐섬</b><p>지역 공연예술 행사를 직접 기획해 성사</p></li>
+      <li><img src="i/fp1.jpg" alt="" loading="lazy"><span class="y">2025–2026</span><b>플리플라 아트파크</b><p>춘천예술촌과 공동기획한 아트 플리마켓. 2025년에 이어 2026년 3회 개최, 예술가의 새로운 시장 개척</p></li>
+      <li><img src="i/prop_tennis.jpg" alt="아티스트 프롭 — STEPPER 〈YOUTH_WINNINGSHOT〉" loading="lazy"><span class="y">2025</span><b>아티스트 프롭 — 지역예술 아카이브</b><p>작가 주도형 디지털 수장고. 총괄이사 강승원 특허출원, IP나래 사업 선정</p></li>
+    </ol>
+
+    <div class="hist">
+      <div>
+        <p class="k">연혁</p>
+        <table class="tl">
+          <tr><th>2022</th><td><b>11.11</b> 협동조합 가시광선 설립 (춘천)</td></tr>
+          <tr><th>2023</th><td>제1회 춘천아트페어 단독 기획·운영</td></tr>
+          <tr><th>2024</th><td>춘천 뿌리전 · 2024 춘천아트페어 아르로드 공동주관 · 이상원미술관 개관 10주년 기념전 도록 · 김현식 기증특별전</td></tr>
+          <tr><th>2025</th><td>춘천 뿌리전 · 아티스트 프롭 특허출원 · IP나래 사업 선정 · 베타 서비스 오픈<br>플리플라 아트파크 첫 개최 · 백남준 서거 20주년 〈안녕, 남준〉 · 광복 80주년 특별기획전 · 2025 강원디자인전람회</td></tr>
+          <tr><th>2026</th><td>코레드 · 원주 원더플레이트 AI 홍보영상 · 노닐섬 · 플리플라 아트파크 3회(6·8·10월)<br>틀 없는 확장 · 기억을 그리다 · 다다다(문경·영월 순회) · 켜 LAYER · 모두의 미술 · 춘천 뿌리전(3회째)<br>영월 인도미술박물관 「뮤지엄 이음」 개선 사업 · 세종 지사 입주(홍익대 세종캠퍼스)</td></tr>
+        </table>
+      </div>
+      <div>
+        <p class="k">연 매출</p>
+        <div class="bars">
+          <div style="--h:52%"><i></i><b>3.1억</b><span>2023</span></div>
+          <div style="--h:58%"><i></i><b>3.5억</b><span>2024</span></div>
+          <div style="--h:51%"><i></i><b>3.1억</b><span>2025</span></div>
+          <div class="hi" style="--h:100%"><i></i><b>6억</b><span>2026 추정</span></div>
+        </div>
+        <p class="cap">2026년은 연말 추정치</p>
+      </div>
+    </div>
+
+    <div class="disc">
+      <a class="row" href="#archive"><h3><b>Exhibition</b> 전시</h3><p>전시 기획부터 공간 디자인, 설치와 운영까지</p><div class="th"><img src="i/frameless_s.jpg" alt="" loading="lazy"></div></a>
+      <a class="row" href="#archive"><h3><b>Event</b> 행사</h3><p>아트마켓·야외 공연 기획부터 현장 운영까지</p><div class="th"><img src="i/nonil_s.jpg" alt="" loading="lazy"></div></a>
+      <a class="row" href="#archive"><h3><b>Graphic</b> 그래픽</h3><p>키비주얼, 무빙 포스터, 도록과 출판물</p><div class="th"><img src="i/flipla_p.jpg" alt="" loading="lazy" style="object-position:center 22%"></div></a>
+      <a class="row" href="#ai"><h3><b>AI Visual</b> AI 영상</h3><p>생성형 AI로 만드는 전시영상과 홍보영상</p><div class="th"><video data-src="v/natar.mp4" poster="v/natar.jpg" muted loop playsinline></video></div></a>
+      <a class="row" href="#lab"><h3><b>Archive</b> 기록</h3><p>지역과 사람을 사진과 영상으로 남기는 작업</p><div class="th"><img src="v/mmiv.jpg" alt="" loading="lazy"></div></a>
+    </div>
+  </div>
+</section>
+
+
+<section class="band" id="archive">
+  <div class="wrap">
+    <p class="k">Archive</p>
+    <h2>지금까지의 작업</h2>
+    <div class="chips" role="group" aria-label="분류">
+      <button class="chip" aria-pressed="true" data-f="all">전체</button>
+      <button class="chip" aria-pressed="false" data-f="ex">전시</button>
+      <button class="chip" aria-pressed="false" data-f="ev">행사</button>
+      <button class="chip" aria-pressed="false" data-f="gr">키비주얼·출판</button>
+      <button class="chip" aria-pressed="false" data-f="ai">AI·영상</button>
+      <button class="chip" aria-pressed="false" data-f="ar">기록</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="band dark" id="ai">
+  <div class="wrap">
+    <p class="k">AI Visual</p>
+    <h2>생성형 AI로 만드는 <span class="l">전시 및 홍보영상</span></h2>
+    <p class="lead">생성형 AI를 활용해 소장품 사진과 실사 촬영본, 3D 데이터를 움직이는 영상으로 만듭니다. 원본의 형태와 디테일은 그대로 두고, 전시장 미디어월부터 홍보 현장까지 상영되는 영상을 제작합니다.</p>
+    <div class="ai-grid" id="aiGrid"></div>
+    <div class="flow">
+      <p class="k">제작 방식</p>
+      <ol class="steps">
+        <li><b>원본 확보</b><span>소장품·현장 촬영, 발주처 자료</span></li>
+        <li><b>스토리보드</b><span>컷 단위 연출과 원고 설계</span></li>
+        <li><b>AI 생성</b><span>이미지→영상 생성, 컷별 재생성·선별</span></li>
+        <li><b>편집·사운드</b><span>색보정, 자막, AI 음원</span></li>
+        <li><b>공간 상영</b><span>미디어월·TV 규격 맞춤 출력</span></li>
+      </ol>
+      <div class="tools"><span class="tag">ComfyUI</span><span class="tag">Seedance</span><span class="tag">Kling</span><span class="tag">Higgsfield</span><span class="tag">Suno</span><span class="tag">Unreal (3D)</span></div>
+      <p class="now">제작 중 — 퓨전국악 공연 《안개 속 풍류》 무대영상 · 케이락컴퍼니 · 음악 분석 기반 공간 맞춤 영상</p>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="lab">
+  <div class="wrap">
+    <p class="k">Archive Lab</p>
+    <h2>작가와 작품의 기록을 <span class="l">아카이브로 남깁니다</span></h2>
+    <div class="lab">
+      <div>
+        <div class="photos" id="photos">
+          <figure><img src="i/mm1.jpg" alt="회화 전시실" loading="lazy"></figure>
+          <figure><img src="i/mm2.jpg" alt="회화 전시 공간" loading="lazy"></figure>
+          <figure><img src="i/mm3.jpg" alt="벽돌 전시실의 작품" loading="lazy"></figure>
+          <figure><img src="i/mm4.jpg" alt="입체 작품 설치" loading="lazy"></figure>
+          <figure><img src="i/mm5.jpg" alt="벽돌 전시실과 계단" loading="lazy"></figure>
+          <figure><img src="i/mm6.jpg" alt="전시 외부 현수막" loading="lazy"></figure>
+        </div>
+        <div class="arrows"><button type="button" data-d="-1" aria-label="이전 사진">←</button><button type="button" data-d="1" aria-label="다음 사진">→</button></div>
+        <h3>2026 춘천 모두의 미술 〈물의 기억, 물이 가는 길〉</h3>
+        <p class="cap">KT&amp;G 상상마당 춘천 · 전시 운영, 참여 작가 10명 아카이브 영상, 무빙 포스터</p>
+      </div>
+      <div>
+        <div class="vv"><video data-src="v/mmiv.mp4" poster="v/mmiv.jpg" muted loop playsinline></video></div>
+        <h3>모두의 미술 — 참여 작가 10인 아카이브 인터뷰</h3>
+        <p class="cap">작업실 촬영과 인터뷰, 작가별 아카이브 영상 제작</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark vision" id="vision">
+  <div class="wrap">
+    <p class="k">Vision 2027</p>
+    <h2>예술에 대한 <span class="l">즐거운 기부문화를 만듭니다</span></h2>
+    <p class="lead">지자체의 공적자금만으로 열리는 축제가 아니라, 작가의 판매와 시민의 참여가 기부금으로 쌓여 스스로 커지는 축제. 그것이 가시광선이 만들고 있는 다음 무대입니다.</p>
+    <p class="fest">FLEEFLA ART CULTURE FESTIVAL<span>플리플라 아트컬쳐페스티벌</span></p>
+    <ol class="cycle">
+      <li><b>01</b>작가 작품 판매수입 · 공연 관람료 · 굿즈 판매</li>
+      <li><b>02</b>수익의 일부를 기부금으로 적립</li>
+      <li><b>03</b>시민과 함께하는 작은 행사</li>
+      <li><b>04</b>기부금이 쌓일수록 점점 큰 축제로</li>
+    </ol>
+    <div class="goals">
+      <div><b>01</b><h3>아카이브 플랫폼</h3><p>아티스트 프롭을 지역 예술가의 표준 아카이브 플랫폼으로</p></div>
+      <div><b>02</b><h3>세종 아트컬쳐페스티벌</h3><p>세종시에 가시광선만의 아트컬쳐페스티벌 유치</p></div>
+      <div><b>03</b><h3>즐거운 기부문화</h3><p>공적자금과 함께, 시민이 즐기며 참여하는 도네이션 모델</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="k">Team</p>
+    <h2>기획부터 기록, 제작, <span class="l">설치까지</span></h2>
+    <div class="team">
+      <div><b>강승원</b><span>책임이사 · 디렉터</span><span>전시 공간 기획, 사진</span></div>
+      <div><b>홍보라</b><span>이사장 · AI 비주얼 디렉터</span><span>생성형 AI 이미지·영상, 사진</span></div>
+      <div><b>이예지</b><span>디자인 파트장</span><span>키비주얼, 편집 디자인</span></div>
+    </div>
+    <div class="info">
+      <div><p class="k">보유 등록·확인</p>
+        <p class="certs">산업디자인전문회사 신고 · 여성기업 확인 · 직접생산확인(전시회, 인쇄출판)<br>옥외광고사업 등록 · 출판사 신고 · 비디오물제작업 신고</p>
+      </div>
+      <div><p class="k">협업 기관</p><div class="clients" id="clients"></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="band dark" id="contact">
+  <div class="wrap">
+    <p class="big"><b>Let's visualize</b><br>together.</p>
+    <div class="contact">
+      <div><span class="cap">Website</span><a href="https://www.visibleray.co.kr">www.visibleray.co.kr</a></div>
+      <div><span class="cap">Office</span>강원특별자치도 춘천시 후석로420번길 7, 6층 619호</div>
+      <div><span class="cap">Contact</span>협동조합 가시광선<br><a href="tel:01094801644">010-9480-1644</a><br><a href="mailto:visibleray.corp@gmail.com">visibleray.corp@gmail.com</a></div>
+    </div>
+    <p class="fine">© 협동조합 가시광선 VISIBLERAY</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-label="작업 상세">
+  <button class="x" type="button" aria-label="닫기">×</button>
+  <div class="dl"><div class="a" id="dA"></div><div class="b" id="dB"></div></div>
+</dialog>
+
+<script>
+{
+const AI=[
+ {v:'natar',t:'나타라자 — 깨어나는 신',c:'인도미술박물관',y:'2026',m:'청동 소장품 촬영본 → AI 영상 생성 · 4K 전시영상, 미디어월 5504×768',d:'박물관 소장 나타라자 상을 촬영한 사진 한 장으로 시바 신의 춤과 불꽃을 살려낸 전시영상.'},
+ {v:'kalam',t:'칼람카리 — 라마야나',c:'인도미술박물관',y:'2026',m:'5m 대작 촬영본 → 컷별 이미지→영상 생성 · 4K',d:'5미터 칼람카리 속 작은 인물들이 움직이도록 원본을 훼손하지 않고 움직임만 더했습니다.'},
+ {v:'kored',t:'코레드 제품 홍보영상',c:'강원디자인진흥원',y:'2026',m:'AI 생성 + 3D(Unreal) 병행',d:'안개 낀 도로를 밝히는 안개감지 조명을 AI 생성 장면과 3D 제품 컷으로 풀어낸 홍보영상.'},
+ {v:'wonju',t:'원주 원더플레이트 PR 영상',c:'강원디자인진흥원',y:'2026',m:'실사 촬영본 + 2D 모션그래픽 + AI 생성',d:'산업단지 피칭 발표용 영상. 실사 자료에 모션그래픽과 AI 생성 장면을 결합했습니다.'}
+];
+const P=[
+ {k:'frameless',hv:'frameless_mp',t:'틀 없는 확장',c:'강원디자인진흥원',y:'2026',f:['ex','gr','ai'],r:'전시 기획·디자인, 공간 설치·운영, 무빙 포스터',x:['fl1','fl2','fl4']},
+ {k:'indo',t:'인도미술박물관 특별전 〈다다다 DA·DA·DA〉',c:'문경 잉카마야박물관 · 영월 인도미술박물관',y:'2026',f:['ex','gr','ar'],r:'전시 기획·디자인, 키비주얼, 소장품 촬영, 도록·리플렛, AI 전시영상',x:['in3','in2','in4','in5']},
+{k:'ppuri',hv:'ppuri_mp',t:'2026 춘천뿌리전 17th 〈만개하는 삶의 예술〉',c:'춘천뿌리전 · 춘천미술관',y:'2024–2026',f:['ex','gr','ar'],r:'전시 기획·운영, 키비주얼, 원로 작가 아카이브 인터뷰 영상',x:['ppuri25','ppuri24','ppuri_h1','ppuri_h2']},
+{k:'modu',hv:'modu_mp',t:'2026 춘천 모두의 미술 〈물의 기억, 물이 가는 길〉',c:'KT&G 상상마당 춘천',y:'2026',f:['ex','ar','ai'],r:'전시 운영, 작가 10명 아카이브 영상, 무빙 포스터',x:['mm4','mm2','mm1']},
+{k:'nonil',t:'〈노닐섬 : 우리, 잔잔할까요?〉 Vol.01',c:'춘천문화재단 · 약사천 수변공원',y:'2026',f:['ev','gr'],r:'야외 음악 행사 기획·운영, 키비주얼, 현장 기록',x:['nn2','nn3','nn4','nn5','nn_soie']},
+{k:'flipla',t:'플리플라 아트파크 · 아트마켓',c:'춘천문화재단 · 춘천예술촌',y:'2025–2026',f:['ev','gr'],r:'아트마켓 기획·운영(6·8·10월), 체험 부스, 공간·홍보물 디자인',x:['fl_paint','fl_demo','fp1','fp3']},
+{k:'layer',t:'켜 LAYER — 춘천 근현대 건축 아카이브',c:'춘천문화원',y:'2026',f:['ex','gr','ai'],r:'키비주얼, 전시 디자인, 아카이브 영상',x:['ex_layer_1','ex_layer_2','ex_layer_3']},
+ {v:'natar',t:'나타라자 — 깨어나는 신',c:'인도미술박물관',y:'2026',f:['ai'],r:'AI 전시영상',x:['natar_a','natar_b','natar_c']},
+ {v:'kalam',t:'칼람카리 — 라마야나',c:'인도미술박물관',y:'2026',f:['ai'],r:'AI 전시영상'},
+ {v:'kored',t:'코레드 제품 홍보영상',c:'강원디자인진흥원',y:'2026',f:['ai'],r:'AI + 3D 홍보영상',x:['kored_a','kored_b','kored_c']},
+ {v:'wonju',t:'원주 원더플레이트 PR 영상',c:'강원디자인진흥원',y:'2026',f:['ai'],r:'실사 + 모션그래픽 + AI',x:['wonju_a','wonju_b','wonju_c']},
+ {k:'memory',t:'기억을 그리다 — 호국영웅의 젊은 날',c:'강원서부보훈지청',y:'2026',f:['ex','gr'],r:'키비주얼, 전시 디자인',x:['ex_memory_1','ex_memory_2','ex_memory_3']},
+
+ {v:'mmmp',t:'〈물의 기억, 물이 가는 길〉 무빙 포스터',c:'2026 춘천 모두의 미술',y:'2026',f:['gr','ai'],r:'키비주얼 · 무빙 포스터'},
+ {v:'mmiv',t:'모두의 미술 — 작가 10인 아카이브 인터뷰',c:'2026 춘천 모두의 미술',y:'2026',f:['ar'],r:'작가 인터뷰 촬영·편집'},
+ 
+ 
+ {k:'namjun',t:'백남준 서거 20주년 〈안녕, 남준〉',c:'코아스페이스 · 구미시문화예술회관',y:'2025',f:['gr','ex'],r:'키비주얼, 전시 설치물 디자인',x:['ex_namjun_2']},
+ {k:'osan',t:'한국근현대미술 명작전',c:'코아스페이스 · 오산시립미술관',y:'2025',f:['gr','ex'],r:'키비주얼, 전시 설치물 디자인',x:['ex_osan_2','ex_osan_1']},
+ {k:'big',t:'너무 크게 상상해도 괜찮아',c:'코아스페이스 · 금정문화회관',y:'2025',f:['gr','ex'],r:'키비주얼, 전시 설치물 디자인',x:['ex_big_1']},
+ {k:'pop',t:'POP Bridge — 팝아트 특별 교류전',c:'코아스페이스',y:'2025',f:['gr','ex'],r:'키비주얼, 전시 설치물 디자인',x:['ex_pop_1']},
+ {k:'liberation',t:'광복 80주년 특별기획전 〈벗이여, 나아가자〉',c:'춘천문화원',y:'2025',f:['ex'],r:'전시 공간 기획·디자인, 설치',x:['ex_liberation_6','ex_liberation_2','ex_liberation_1']},
+ {k:'choi',t:'웹툰작가 최성국 특별기획전',c:'강원권통일플러스센터',y:'',f:['ex'],r:'전시 공간 기획·디자인, 설치'},
+ {k:'nostal',t:'노스탤지어 춘천 — 사라진 공간과 집단기억',c:'춘천문화원',y:'2025',f:['ex','gr'],r:'전시 공간 기획·디자인, 설치',x:['ex_nostal_1','ex_nostal_2']},
+ {k:'award',t:'2025 강원디자인전람회',c:'강원디자인진흥원',y:'2025',f:['gr'],r:'키비주얼, 모션 포스터'},
+
+ {k:'play',t:'〈놀이〉 전시',c:'춘천애니메이션박물관 · 토이박물관',y:'2024–2025',f:['ex'],r:'전시 공간 기획·디자인, 설치',x:['ex_play_6','ex_play_7','ex_play_1']},
+ {k:'leesw',t:'이상원미술관 개관 10주년 기념전',c:'이상원미술관',y:'2024',f:['gr','ar'],r:'촬영, 도록 디자인',x:['ex_leesw_1','ex_leesw_3','ex_leesw_7']},
+ {k:'kimhs',t:'김현식 기증특별전',c:'춘천문화원',y:'2024',f:['ex','gr'],r:'전시 공간 기획·디자인, 설치',x:['ex_kimhs_1','ex_kimhs_3','ex_kimhs_4']},
+ {k:'artroad',t:'2024 춘천아트페어 아르로드',c:'춘천미술협회',y:'2024',f:['ex','gr'],r:'전시 기획·디자인, 공간 설치·운영',x:['ex_artroad_5','ex_artroad_6','ex_artroad_8','ex_artroad_1']},
+ {k:'bus',t:'춘천 콜렉션 〈버스〉',c:'춘천문화원',y:'',f:['ex','gr'],r:'전시 공간 기획·디자인, 설치',x:['ex_bus_1','ex_bus_3']},
+ {k:'resid',t:'춘천예술촌 4기 입주작가 연속전시',c:'춘천예술촌',y:'',f:['gr'],r:'키비주얼',x:['ex_resid_1','ex_resid_2','ex_resid_4']}
+];
+const CLI=[['logo/gidp','강원디자인진흥원'],['logo/cccc','춘천문화원'],['logo/cccf','춘천문화재단'],['logo/kfa','한국미술협회 춘천지부'],['logo/indo','인도미술박물관'],['logo/lsw','이상원미술관'],['logo/ani','춘천애니메이션박물관'],['gov','강원권통일플러스센터'],['gov','강원서부보훈지청'],['logo/gwcf','강원문화재단'],['logo/ktng','KT&G 상상마당 춘천'],['logo/kam','한국박물관협회'],['gov','문화체육관광부'],[null,'코아스페이스']];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s);
+$('#clients').innerHTML=CLI.map(([l,n])=>l===null?`<div class="cl t"><b>${esc(n)}</b></div>`:l==='gov'?`<div class="cl g"><img src="i/logo/gov.png" alt=""><b>${esc(n)}</b></div>`:`<div class="cl"><img src="i/${l}.png" alt="${esc(n)}" title="${esc(n)}"></div>`).join('');
+$('#aiGrid').innerHTML=AI.map(a=>`<article class="vc"><div class="m"><video data-src="v/${a.v}.mp4" poster="v/${a.v}.jpg" muted loop playsinline aria-label="${esc(a.t)}"></video></div><h3>${esc(a.t)}</h3><div class="meta">${esc(a.c)} · ${a.y} · ${esc(a.m)}</div><p>${esc(a.d)}</p></article>`).join('');
+const thumb=p=>p.v?`<video data-src="v/${p.v}.mp4" poster="v/${p.v}.jpg" muted loop playsinline></video>`:`<img src="i/${p.img||p.k+'_p'}.jpg" alt="" loading="lazy">`+(p.hv?`<video class="hv" data-hv="v/${p.hv}.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>`:'');
+$('#grid').innerHTML=P.map((p,i)=>`<button class="card" data-i="${i}" data-f="${p.f.join(' ')}" aria-label="${esc(p.t)} 자세히"><div class="im">${thumb(p)}</div><h3>${esc(p.t)}</h3><span class="cap">${esc([p.c,p.y].filter(Boolean).join(' · '))}</span></button>`).join('');
+
+/* filter */
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ const f=b.dataset.f;document.querySelectorAll('.card').forEach(c=>{c.hidden=!(f==='all'||c.dataset.f.split(' ').includes(f))});
+}));
+
+/* dialog */
+const dlg=$('#dlg');
+$('#grid').addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;const p=P[+c.dataset.i];
+ const ai=AI.find(a=>a.v&&a.v===p.v);
+ const media=(p.hv?`<video src="v/${p.hv}.mp4" muted loop playsinline autoplay></video>`:'')+(p.v?`<video src="v/${p.v}.mp4" poster="v/${p.v}.jpg" muted loop playsinline autoplay controls></video>`:(p.k?`<img src="i/${p.k}_p.jpg" alt="${esc(p.t)} 포스터">`+(['bus','award','resid'].includes(p.k)?'':`<img src="i/${p.k}_s.jpg" alt="${esc(p.t)} 현장">`):`<img src="i/${p.img}.jpg" alt="">`));
+ $('#dA').innerHTML=media+(p.x||[]).map(k=>`<img src="i/${k}.jpg" alt="">`).join('');
+ $('#dB').innerHTML=`<h3>${esc(p.t)}</h3><dl>${p.c?`<dt>발주</dt><dd>${esc(p.c)}</dd>`:''}${p.y?`<dt>연도</dt><dd>${esc(p.y)}</dd>`:''}<dt>역할</dt><dd>${esc(p.r)}</dd>${ai?`<dt>방식</dt><dd>${esc(ai.m)}</dd>`:''}</dl>${ai?`<p class="cap" style="margin-top:18px;font-size:15px">${esc(ai.d)}</p>`:''}`;
+ try{dlg.showModal()}catch(_){dlg.setAttribute('open','')}
+});
+const closeD=()=>{dlg.querySelectorAll('video').forEach(v=>v.pause());dlg.close()};
+dlg.querySelector('.x').addEventListener('click',closeD);
+dlg.addEventListener('click',e=>{if(e.target===dlg)closeD()});
+
+/* photo arrows */
+const ph=$('#photos');
+document.querySelectorAll('.arrows button').forEach(b=>b.addEventListener('click',()=>ph.scrollBy({left:+b.dataset.d*ph.clientWidth*.8,behavior:'smooth'})));
+
+/* lazy autoplay */
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hero=$('#reel');const pickReel=()=>{const f='reel';if(!hero.src.includes(f+'.mp4')){hero.poster='v/'+f+'.jpg';hero.src='v/'+f+'.mp4';if(!still)hero.play().catch(()=>{})}};pickReel();matchMedia('(orientation: portrait)').addEventListener('change',pickReel);
+if(still){hero.removeAttribute('autoplay');hero.pause()}
+
+document.querySelectorAll('.card').forEach(c=>{const v=c.querySelector('video.hv');if(!v)return;
+ const on=()=>{if(!v.src)v.src=v.dataset.hv;v.play().then(()=>c.classList.add('on')).catch(()=>{})};
+ const off=()=>{c.classList.remove('on');v.pause();try{v.currentTime=0}catch(_){}};
+ c.addEventListener('mouseenter',on);c.addEventListener('mouseleave',off);c.addEventListener('focus',on);c.addEventListener('blur',off);});
+const vio=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target;
+ if(en.isIntersecting){if(!v.src&&v.dataset.src)v.src=v.dataset.src;if(!still)v.play().catch(()=>{})}else v.pause();
+}),{rootMargin:'200px 0px'});
+const watch=()=>document.querySelectorAll('video[data-src]').forEach(v=>vio.observe(v));
+watch();
+}
+</script>
+</body>
+</html>
